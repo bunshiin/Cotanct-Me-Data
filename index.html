@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form - Data</title>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="box">
+                <form action="" name="contact-me">
+                    <div class="header">
+                        <span class="input-text">Contact Me</span>
+                    </div>
+                    <input class="input" name="name" type="text" placeholder="Name">
+                    <input class="input" name="surname" type="text" placeholder="Surname">
+                    <input class="input" name="email" type="email" placeholder="E-mail">
+                    <input class="input textarea" name="message" type="text" placeholder="Message">
+                    <button class="buttonSkin" type="submit">Send</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+</body>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz3HnbpmKx0ZmWuQqqt6WCUKx2JaYlgkxMIhw-9kxXAmN1oinKkKgu_3frqN5cf85--/exec'
+    const form = document.forms['contact-me']
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+    })
+</script>
+
+
+</html>
